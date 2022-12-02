@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.ArrayList;
+
 import static java.lang.Character.isLowerCase;
 import static java.lang.Character.isUpperCase;
 import static java.lang.Character.toLowerCase;
@@ -47,6 +50,17 @@ public class ROT13  {
             }
         }
         return String.copyValueOf(input);
+    }
+    public void cryptFile(String fileInput,String fileOutput) throws IOException {
+        BufferedReader br=new BufferedReader(new FileReader(fileInput));
+        BufferedWriter bw=new BufferedWriter(new FileWriter(fileOutput));
+        String line = null;
+        while((line=br.readLine())!=null){
+            bw.write(encrypt(line));
+            bw.flush();
+            bw.newLine();
+        }
+
     }
 
 }

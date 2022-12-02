@@ -1,4 +1,11 @@
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.junit.Assert.*;
 
@@ -87,5 +94,19 @@ public class ROT13Test {
         // Then
         assertTrue(actual.equals(Q1));
     }
+    @Test
+    public void cryptFileTest() throws IOException {
+        // Given
+        ROT13 cipher = new ROT13('a', 'n');
+        File inputFile=new File("sonnet18.txt");
+        File outputFile=new File("sonnet18New.txt");
+
+        //When
+        cipher.cryptFile("sonnet18.txt", "sonnet18.enc");
+        cipher.cryptFile("sonnet18.enc", "sonnet18New.txt");
+        //Then
+        //CheckFiles
+    }
+
 
 }
